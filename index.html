@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Luma</title>
+    <title>Luma Legal</title>
     <style>
       * {
         margin: 0;
@@ -27,8 +27,8 @@
 
       header {
         text-align: center;
-        margin-bottom: 60px;
-        padding: 40px 0;
+        margin-bottom: 40px;
+        padding: 40px 20px;
         background: white;
         border-radius: 18px;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
@@ -38,23 +38,53 @@
         font-size: 48px;
         font-weight: 600;
         margin-bottom: 12px;
-        color: #1d1d1f;
       }
 
       .subtitle {
         font-size: 21px;
         color: #86868b;
-        margin-bottom: 20px;
+        margin-bottom: 24px;
       }
 
       .last-updated {
         font-size: 14px;
         color: #86868b;
-        margin-top: 20px;
+        margin-top: 18px;
+      }
+
+      .page-toggle {
+        margin-top: 16px;
+        display: flex;
+        justify-content: center;
+        gap: 0;
+        background: #f5f5f7;
+        padding: 4px;
+        border-radius: 12px;
+        max-width: 640px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .page-toggle button {
+        flex: 1;
+        background: transparent;
+        border: none;
+        padding: 12px 16px;
+        border-radius: 10px;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 600;
+        color: #1d1d1f;
+        transition: all 0.2s;
+      }
+
+      .page-toggle button.active {
+        background: white;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
       }
 
       .language-toggle {
-        margin-top: 20px;
+        margin-top: 16px;
       }
 
       .language-toggle button {
@@ -73,35 +103,20 @@
         color: white;
       }
 
-      .page-toggle {
-        margin-top: 30px;
-        display: flex;
-        justify-content: center;
-        gap: 0;
-        background: #f5f5f7;
-        padding: 4px;
-        border-radius: 12px;
-        max-width: 400px;
-        margin-left: auto;
-        margin-right: auto;
+      .page-section {
+        display: none;
       }
 
-      .page-toggle button {
-        flex: 1;
-        background: transparent;
-        border: none;
-        padding: 12px 24px;
-        border-radius: 10px;
-        cursor: pointer;
-        font-size: 15px;
-        font-weight: 500;
-        color: #1d1d1f;
-        transition: all 0.2s;
+      .page-section.active {
+        display: block;
       }
 
-      .page-toggle button.active {
-        background: white;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      .lang-section {
+        display: none;
+      }
+
+      .lang-section.active {
+        display: block;
       }
 
       .content {
@@ -112,36 +127,21 @@
         margin-bottom: 20px;
       }
 
-      .page-section {
-        display: none;
-      }
-
-      .page-section.active {
-        display: block;
-      }
-
       h2 {
         font-size: 32px;
         font-weight: 600;
-        margin: 40px 0 20px 0;
-        color: #1d1d1f;
-      }
-
-      h2:first-child {
-        margin-top: 0;
+        margin: 0 0 20px 0;
       }
 
       h3 {
         font-size: 24px;
         font-weight: 600;
         margin: 30px 0 16px 0;
-        color: #1d1d1f;
       }
 
       p {
         font-size: 17px;
         margin-bottom: 16px;
-        color: #1d1d1f;
       }
 
       ul,
@@ -151,8 +151,7 @@
       }
 
       li {
-        margin-bottom: 12px;
-        color: #1d1d1f;
+        margin-bottom: 10px;
       }
 
       .highlight-box {
@@ -165,9 +164,9 @@
 
       .contact-info {
         background: #f5f5f7;
-        padding: 32px;
+        padding: 28px;
         border-radius: 12px;
-        margin-top: 40px;
+        margin-top: 36px;
       }
 
       a {
@@ -181,17 +180,9 @@
 
       footer {
         text-align: center;
-        padding: 40px 20px;
+        padding: 32px 20px;
         color: #86868b;
         font-size: 14px;
-      }
-
-      .lang-section {
-        display: none;
-      }
-
-      .lang-section.active {
-        display: block;
       }
 
       @media (max-width: 768px) {
@@ -210,6 +201,16 @@
         h3 {
           font-size: 21px;
         }
+
+        .page-toggle {
+          max-width: 100%;
+          flex-wrap: wrap;
+        }
+
+        .page-toggle button {
+          flex: 1 1 32%;
+          min-width: 120px;
+        }
       }
     </style>
   </head>
@@ -220,184 +221,142 @@
         <p class="subtitle">健康监控助手 | Health Monitoring Assistant</p>
 
         <div class="page-toggle">
-          <button
-            class="active"
-            onclick="switchPage('privacy')"
-            id="privacy-tab"
-          >
+          <button class="active" data-page="privacy" id="privacy-tab">
             <span class="zh-text">隐私政策</span> |
             <span class="en-text">Privacy Policy</span>
           </button>
-          <button onclick="switchPage('support')" id="support-tab">
+          <button data-page="terms" id="terms-tab">
+            <span class="zh-text">服务条款</span> |
+            <span class="en-text">Terms of Service</span>
+          </button>
+          <button data-page="support" id="support-tab">
             <span class="zh-text">技术支持</span> |
             <span class="en-text">Support</span>
           </button>
         </div>
 
         <div class="language-toggle">
-          <button class="active" onclick="switchLanguage('zh')">中文</button>
-          <button onclick="switchLanguage('en')">English</button>
+          <button class="active" data-lang="zh">中文</button>
+          <button data-lang="en">English</button>
         </div>
+
         <p class="last-updated">
-          最后更新日期 | Last Updated: 2026年1月27日 | January 27, 2026
+          最后更新日期 | Last Updated: 2026年2月23日 | February 23, 2026
         </p>
       </header>
 
-      <!-- 隐私政策页面 -->
       <div class="page-section active" id="privacy-page">
-        <!-- 中文版本 -->
-        <div class="content lang-section active" id="zh-content">
+        <div class="content lang-section active" id="privacy-zh-content">
           <h2>隐私政策</h2>
 
           <div class="highlight-box">
             <p>
               <strong>核心承诺：</strong>Luma
-              是一款完全本地运行的健康监控应用。我们不收集、不存储、不传输您的任何个人数据到我们的服务器。您的所有数据都安全地保存在您的
-              Mac 设备上。
+              主要采用本地优先架构。您的健康节律、饮水、统计与提醒相关数据默认存储在您的
+              Mac 设备中，我们不会将这些个人数据上传到自建服务器。
             </p>
           </div>
 
-          <h3>1. 数据收集</h3>
+          <h3>1. 我们处理的数据类型</h3>
+          <p>为实现产品功能，Luma 可能在本地处理以下数据：</p>
+          <ul>
+            <li><strong>节律数据：</strong>工作时长、休息时长、提醒触发记录</li>
+            <li>
+              <strong>饮水与健康记录：</strong
+              >您手动记录的饮水量、时间与完成状态
+            </li>
+            <li>
+              <strong>统计与成就数据：</strong>连续打卡、里程碑、趋势分析结果
+            </li>
+            <li>
+              <strong>蓝牙检测数据（可选）：</strong
+              >用于判断离开/返回状态的信号强度信息
+            </li>
+            <li>
+              <strong>摄像头在场检测（可选）：</strong
+              >仅本地实时分析是否在电脑前，不保存影像
+            </li>
+          </ul>
+
+          <h3>2. 数据存储与保留</h3>
+          <ul>
+            <li>
+              默认本地存储路径：<code>~/Library/Application Support/Luma/</code>
+            </li>
+            <li>数据受 macOS 沙盒与本机访问控制保护</li>
+            <li>卸载应用后，本地数据可被系统清理</li>
+            <li>您可在应用内清理数据，或手动删除本地目录</li>
+          </ul>
+
+          <h3>3. 数据用途</h3>
+          <ul>
+            <li>提供健康节律提醒、喝水提醒及进度追踪</li>
+            <li>在会议、全屏或媒体播放等场景下执行智能暂停</li>
+            <li>展示分析图表、趋势、成就与个性化建议</li>
+            <li>改善提醒准确性与稳定性（仅在本地范围内）</li>
+          </ul>
+
+          <h3>4. 数据共享与对外传输</h3>
           <p>
-            <strong>重要说明：Luma 不会收集或上传任何数据到服务器。</strong
-            >以下信息仅在您的设备本地处理和存储：
+            <strong>我们不会向广告网络或数据经纪商出售您的个人数据。</strong>
           </p>
           <ul>
+            <li>我们不将您的本地健康数据传输到自建服务器</li>
+            <li>我们不向第三方分析平台发送可识别个人数据</li>
             <li>
-              <strong>使用时长数据：</strong
-              >工作时长、休息时长，用于健康节律提醒
+              订阅与支付由 Apple App Store/StoreKit
+              处理，相关交易信息由苹果依据其条款处理
             </li>
-            <li><strong>喝水记录：</strong>您手动记录的饮水量和时间</li>
-            <li>
-              <strong>蓝牙设备信息（可选）：</strong
-              >如果您启用蓝牙检测功能，应用会扫描附近的蓝牙设备信号强度，用于判断您是否离开电脑。我们不会收集设备名称或其他识别信息，所有检测都在本地完成
-            </li>
-            <li>
-              <strong>摄像头检测（可选）：</strong
-              >如果您启用摄像头检测功能，应用会使用摄像头检测您是否在电脑前。<strong>我们不会录制、存储或传输任何图像或视频</strong>，仅在本地实时分析是否有人在场
-            </li>
-            <li>
-              <strong>日历事件（可选）：</strong
-              >如果您启用智能暂停功能，应用会读取您的日历事件标题和时间，用于在会议期间自动暂停提醒。日历数据仅在本地读取，不会上传
-            </li>
-            <li>
-              <strong>应用使用情况（可选）：</strong
-              >如果您启用智能暂停功能，应用会检测当前运行的应用程序，用于在全屏或媒体播放时自动暂停提醒
-            </li>
-            <li>
-              <strong>成就和统计数据：</strong>连续打卡天数、徽章、使用分析数据
-            </li>
+          </ul>
+
+          <h3>5. 权限与用途说明</h3>
+          <ul>
+            <li><strong>蓝牙权限：</strong>用于离开/返回状态检测</li>
+            <li><strong>摄像头权限：</strong>用于在场检测，不录制不上传</li>
+            <li><strong>日历权限：</strong>用于会议期间自动暂停提醒</li>
+            <li><strong>屏幕录制权限：</strong>用于全屏/媒体状态识别</li>
+            <li><strong>辅助功能权限：</strong>用于系统空闲与交互状态检测</li>
           </ul>
           <p>
-            <strong
-              >所有数据处理都在您的设备本地完成，不会发送到任何服务器。</strong
-            >
+            您可以随时在 macOS
+            系统设置中撤销权限。撤销后相应功能会受限，但不会影响基础提醒功能。
           </p>
 
-          <h3>2. 数据存储</h3>
-          <p>所有数据均使用 Apple 的 SwiftData 框架存储在您的 Mac 本地：</p>
+          <h3>6. 订阅与支付</h3>
           <ul>
-            <li>
-              数据存储位置：<code>~/Library/Application Support/Luma/</code>
-            </li>
-            <li>数据不会上传到任何云服务器</li>
-            <li>数据不会与其他应用共享</li>
-            <li>您可以随时通过卸载应用删除所有数据</li>
-          </ul>
-
-          <h3>3. 数据使用</h3>
-          <p>我们仅在您的设备本地使用收集的数据，用于：</p>
-          <ul>
-            <li>提供健康节律提醒（工作-休息周期）</li>
-            <li>显示喝水提醒和进度追踪</li>
-            <li>智能暂停提醒（会议、全屏、媒体播放时）</li>
-            <li>生成使用统计和健康洞察</li>
-            <li>显示成就和里程碑庆祝</li>
-          </ul>
-
-          <h3>4. 数据共享</h3>
-          <p><strong>我们不会与任何第三方共享您的数据。</strong></p>
-          <ul>
-            <li>不会向广告商出售或共享数据</li>
-            <li>不会向分析服务商发送数据</li>
-            <li>不会与其他应用或服务共享数据</li>
-          </ul>
-
-          <h3>5. 权限说明</h3>
-          <p>Luma 可能请求以下系统权限（均为可选）：</p>
-          <ul>
-            <li>
-              <strong>蓝牙权限：</strong
-              >用于检测您是否离开电脑，实现自动休息追踪。仅检测信号强度，不收集设备信息
-            </li>
-            <li>
-              <strong>摄像头权限：</strong
-              >用于检测您是否在电脑前。<strong>不会录制、存储或传输任何图像或视频</strong>，仅实时分析是否有人在场，所有处理都在本地完成
-            </li>
-            <li>
-              <strong>日历权限：</strong
-              >用于读取会议时间，在会议期间自动暂停提醒。仅本地读取，不上传数据
-            </li>
-            <li>
-              <strong>屏幕录制权限：</strong
-              >用于检测全屏应用和媒体播放状态，实现智能暂停功能
-            </li>
-            <li>
-              <strong>辅助功能权限：</strong
-              >用于检测系统空闲时间，判断您是否在使用电脑
-            </li>
-          </ul>
-          <p>
-            您可以随时在系统设置中撤销这些权限。撤销权限后，相关功能将停止工作，但不会影响应用的核心功能。<strong
-              >所有权限仅用于本地功能，不会将任何数据发送到服务器。</strong
-            >
-          </p>
-
-          <h3>6. 订阅和支付</h3>
-          <p>Luma 提供应用内订阅服务（Premium 会员）：</p>
-          <ul>
-            <li>支付处理由 Apple App Store 完成</li>
-            <li>我们不会收集或存储您的支付信息</li>
-            <li>订阅状态由 Apple StoreKit 管理</li>
-            <li>您可以随时在 App Store 中管理或取消订阅</li>
+            <li>订阅开通、扣费、续费与退款规则由 Apple 平台决定</li>
+            <li>我们不直接保存您的银行卡或支付凭据</li>
+            <li>您可在 App Store 账户设置中管理或取消订阅</li>
           </ul>
 
           <h3>7. 儿童隐私</h3>
           <p>
-            Luma 适用于所有年龄段的用户。我们不会故意收集 13
-            岁以下儿童的个人信息。如果您是家长或监护人，发现您的孩子向我们提供了个人信息，请联系我们，我们将删除相关信息。
+            我们不会故意面向儿童收集个人信息。如您认为未成年人向我们提供了不当信息，请联系下方邮箱。
           </p>
 
           <h3>8. 数据安全</h3>
-          <p>我们采取以下措施保护您的数据：</p>
           <ul>
-            <li>所有数据存储在您的设备本地，受 macOS 系统保护</li>
-            <li>应用使用 Apple 的沙盒机制，与其他应用隔离</li>
-            <li>不通过网络传输任何个人数据</li>
+            <li>本地数据受 macOS 安全机制与权限控制保护</li>
+            <li>应用运行在沙盒环境，与其他应用隔离</li>
+            <li>默认不进行个人数据网络传输</li>
           </ul>
 
           <h3>9. 您的权利</h3>
-          <p>您对自己的数据拥有完全控制权：</p>
           <ul>
-            <li><strong>访问权：</strong>您可以随时在应用内查看所有数据</li>
-            <li>
-              <strong>删除权：</strong
-              >您可以在应用设置中清除所有数据，或通过卸载应用删除所有数据
-            </li>
-            <li>
-              <strong>导出权：</strong>您可以通过访问
-              <code>~/Library/Application Support/Luma/</code> 目录导出数据
-            </li>
+            <li><strong>访问权：</strong>可在应用中查看主要记录</li>
+            <li><strong>删除权：</strong>可在设置中清理，或卸载应用删除</li>
+            <li><strong>导出权：</strong>可从本地目录导出您可访问的数据</li>
           </ul>
 
-          <h3>10. 隐私政策变更</h3>
+          <h3>10. 政策更新</h3>
           <p>
-            我们可能会不时更新本隐私政策。重大变更时，我们会在应用内通知您。继续使用应用即表示您接受更新后的隐私政策。
+            我们可能根据功能变化或法律要求更新本政策。更新后继续使用 Luma
+            即表示您同意更新内容。
           </p>
 
           <div class="contact-info">
             <h3>联系我们</h3>
-            <p>如果您对本隐私政策有任何疑问或建议，请通过以下方式联系我们：</p>
+            <p>如果您对隐私政策有疑问，请联系：</p>
             <p>
               <strong>邮箱：</strong>
               <a href="mailto:qq927884591@gmail.com">qq927884591@gmail.com</a>
@@ -405,218 +364,142 @@
           </div>
         </div>
 
-        <!-- English Version -->
-        <div class="content lang-section" id="en-content">
+        <div class="content lang-section" id="privacy-en-content">
           <h2>Privacy Policy</h2>
 
           <div class="highlight-box">
             <p>
-              <strong>Core Commitment:</strong> Luma is a completely local
-              health monitoring app. We do not collect, store, or transmit any
-              of your personal data to our servers. All your data is securely
-              stored on your Mac device.
+              <strong>Core Commitment:</strong> Luma is built with a local-first
+              architecture. Your health rhythm, water, analytics, and reminder
+              data are stored on your Mac by default. We do not upload this
+              personal data to our own servers.
             </p>
           </div>
 
-          <h3>1. Data Collection</h3>
+          <h3>1. Data We Process</h3>
+          <p>
+            Luma may process the following data locally to provide features:
+          </p>
+          <ul>
+            <li>
+              <strong>Rhythm data:</strong> work/rest durations and reminder
+              logs
+            </li>
+            <li>
+              <strong>Water and wellness records:</strong> manual intake logs
+              and timestamps
+            </li>
+            <li>
+              <strong>Stats and achievements:</strong> streaks, milestones, and
+              trend outputs
+            </li>
+            <li>
+              <strong>Bluetooth signals (optional):</strong> used to detect
+              away/return states
+            </li>
+            <li>
+              <strong>Camera presence check (optional):</strong> local real-time
+              presence analysis only
+            </li>
+          </ul>
+
+          <h3>2. Storage and Retention</h3>
+          <ul>
+            <li>
+              Default local path:
+              <code>~/Library/Application Support/Luma/</code>
+            </li>
+            <li>
+              Data is protected by macOS sandbox and local access controls
+            </li>
+            <li>Data may be removed when uninstalling the app</li>
+            <li>You can clear data in-app or manually remove local files</li>
+          </ul>
+
+          <h3>3. How We Use Data</h3>
+          <ul>
+            <li>Provide health rhythm reminders and water tracking</li>
+            <li>
+              Pause reminders intelligently during meetings/fullscreen/media
+            </li>
+            <li>Show analytics, trends, milestones, and suggestions</li>
+            <li>Improve local reminder stability and accuracy</li>
+          </ul>
+
+          <h3>4. Sharing and Transfers</h3>
           <p>
             <strong
-              >Important: Luma does not collect or upload any data to
-              servers.</strong
-            >
-            The following information is only processed and stored locally on
-            your device:
-          </p>
-          <ul>
-            <li>
-              <strong>Usage Duration Data:</strong> Work duration and rest
-              duration for health rhythm reminders
-            </li>
-            <li>
-              <strong>Water Intake Records:</strong> Water consumption and time
-              you manually record
-            </li>
-            <li>
-              <strong>Bluetooth Device Information (Optional):</strong> If you
-              enable Bluetooth detection, the app scans nearby Bluetooth device
-              signal strength to determine if you've left your computer. We do
-              not collect device names or other identifying information. All
-              detection is done locally
-            </li>
-            <li>
-              <strong>Camera Detection (Optional):</strong> If you enable camera
-              detection, the app uses the camera to detect if you're in front of
-              your computer.
-              <strong
-                >We do not record, store, or transmit any images or
-                videos</strong
-              >. Only real-time local analysis of presence is performed
-            </li>
-            <li>
-              <strong>Calendar Events (Optional):</strong> If you enable Smart
-              Pause, the app reads your calendar event titles and times to
-              automatically pause reminders during meetings. Calendar data is
-              only read locally and not uploaded
-            </li>
-            <li>
-              <strong>Application Usage (Optional):</strong> If you enable Smart
-              Pause, the app detects currently running applications to
-              automatically pause reminders during fullscreen or media playback
-            </li>
-            <li>
-              <strong>Achievements and Statistics:</strong> Streak days, badges,
-              and usage analysis data
-            </li>
-          </ul>
-          <p>
-            <strong
-              >All data processing is done locally on your device and is not
-              sent to any servers.</strong
+              >We do not sell your personal data to ad networks or data
+              brokers.</strong
             >
           </p>
-
-          <h3>2. Data Storage</h3>
-          <p>
-            All data is stored locally on your Mac using Apple's SwiftData
-            framework:
-          </p>
           <ul>
+            <li>We do not send your local wellness data to our own servers</li>
             <li>
-              Storage location: <code>~/Library/Application Support/Luma/</code>
+              We do not share identifiable personal data with third-party
+              analytics
             </li>
-            <li>Data is not uploaded to any cloud servers</li>
-            <li>Data is not shared with other applications</li>
-            <li>You can delete all data at any time by uninstalling the app</li>
+            <li>
+              Subscriptions and payments are handled by Apple App Store/StoreKit
+              under Apple policies
+            </li>
           </ul>
 
-          <h3>3. Data Usage</h3>
-          <p>We only use collected data locally on your device for:</p>
+          <h3>5. Permissions and Purpose</h3>
           <ul>
-            <li>Providing health rhythm reminders (work-rest cycles)</li>
-            <li>Displaying water reminders and progress tracking</li>
+            <li><strong>Bluetooth:</strong> away/return detection</li>
+            <li><strong>Camera:</strong> on-device presence detection only</li>
+            <li><strong>Calendar:</strong> meeting-based Smart Pause</li>
             <li>
-              Smart pause reminders (during meetings, fullscreen, media
-              playback)
+              <strong>Screen Recording:</strong> fullscreen/media state
+              detection
             </li>
-            <li>Generating usage statistics and health insights</li>
-            <li>Displaying achievements and milestone celebrations</li>
-          </ul>
-
-          <h3>4. Data Sharing</h3>
-          <p>
-            <strong>We do not share your data with any third parties.</strong>
-          </p>
-          <ul>
-            <li>We do not sell or share data with advertisers</li>
-            <li>We do not send data to analytics services</li>
-            <li>We do not share data with other apps or services</li>
-          </ul>
-
-          <h3>5. Permissions</h3>
-          <p>
-            Luma may request the following system permissions (all optional):
-          </p>
-          <ul>
-            <li>
-              <strong>Bluetooth Permission:</strong> To detect if you've left
-              your computer for automatic rest tracking. Only detects signal
-              strength, does not collect device information
-            </li>
-            <li>
-              <strong>Camera Permission:</strong> To detect if you're in front
-              of your computer.
-              <strong
-                >Does not record, store, or transmit any images or
-                videos</strong
-              >. Only performs real-time local analysis of presence
-            </li>
-            <li>
-              <strong>Calendar Permission:</strong> To read meeting times and
-              automatically pause reminders during meetings. Only reads locally,
-              does not upload data
-            </li>
-            <li>
-              <strong>Screen Recording Permission:</strong> To detect fullscreen
-              apps and media playback status for Smart Pause functionality
-            </li>
-            <li>
-              <strong>Accessibility Permission:</strong> To detect system idle
-              time and determine if you're using your computer
-            </li>
+            <li><strong>Accessibility:</strong> idle/input state detection</li>
           </ul>
           <p>
-            You can revoke these permissions at any time in System Settings.
-            After revoking permissions, related features will stop working, but
-            core functionality will not be affected.
-            <strong
-              >All permissions are only used for local functionality and no data
-              is sent to servers.</strong
-            >
+            You can revoke permissions any time in macOS System Settings.
+            Revoking permissions may limit related features but not basic
+            reminders.
           </p>
 
           <h3>6. Subscriptions and Payments</h3>
-          <p>Luma offers in-app subscription services (Premium membership):</p>
           <ul>
-            <li>Payment processing is handled by Apple App Store</li>
-            <li>We do not collect or store your payment information</li>
-            <li>Subscription status is managed by Apple StoreKit</li>
-            <li>
-              You can manage or cancel subscriptions at any time in the App
-              Store
-            </li>
+            <li>Billing, renewal, and refund rules are controlled by Apple</li>
+            <li>We do not directly store your card or payment credentials</li>
+            <li>You can manage/cancel subscriptions in App Store settings</li>
           </ul>
 
-          <h3>7. Children's Privacy</h3>
+          <h3>7. Children’s Privacy</h3>
           <p>
-            Luma is suitable for users of all ages. We do not knowingly collect
-            personal information from children under 13. If you are a parent or
-            guardian and discover that your child has provided us with personal
-            information, please contact us and we will delete the relevant
-            information.
+            We do not knowingly collect personal data from children. If you
+            believe a minor submitted inappropriate information, contact us.
           </p>
 
-          <h3>8. Data Security</h3>
-          <p>We take the following measures to protect your data:</p>
+          <h3>8. Security</h3>
           <ul>
-            <li>
-              All data is stored locally on your device, protected by macOS
-            </li>
-            <li>
-              The app uses Apple's sandbox mechanism, isolated from other apps
-            </li>
-            <li>No personal data is transmitted over the network</li>
+            <li>Local data is protected by macOS security controls</li>
+            <li>The app runs in sandboxed mode</li>
+            <li>No personal data network transfer by default</li>
           </ul>
 
           <h3>9. Your Rights</h3>
-          <p>You have complete control over your data:</p>
           <ul>
+            <li><strong>Access:</strong> view key records in the app</li>
+            <li><strong>Deletion:</strong> clear data in-app or uninstall</li>
             <li>
-              <strong>Access Right:</strong> You can view all data in the app at
-              any time
-            </li>
-            <li>
-              <strong>Deletion Right:</strong> You can clear all data in app
-              settings or delete all data by uninstalling the app
-            </li>
-            <li>
-              <strong>Export Right:</strong> You can export data by accessing
-              the <code>~/Library/Application Support/Luma/</code> directory
+              <strong>Export:</strong> export files you can access locally
             </li>
           </ul>
 
-          <h3>10. Privacy Policy Changes</h3>
+          <h3>10. Policy Updates</h3>
           <p>
-            We may update this privacy policy from time to time. For significant
-            changes, we will notify you within the app. Continued use of the app
-            indicates your acceptance of the updated privacy policy.
+            We may update this policy for feature or legal changes. Continued
+            use of Luma after updates means you accept the revised policy.
           </p>
 
           <div class="contact-info">
-            <h3>Contact Us</h3>
-            <p>
-              If you have any questions or suggestions about this privacy
-              policy, please contact us:
-            </p>
+            <h3>Contact</h3>
+            <p>For privacy questions, contact:</p>
             <p>
               <strong>Email:</strong>
               <a href="mailto:qq927884591@gmail.com">qq927884591@gmail.com</a>
@@ -624,445 +507,315 @@
           </div>
         </div>
       </div>
-      <!-- 隐私政策页面结束 -->
 
-      <!-- 技术支持页面 -->
+      <div class="page-section" id="terms-page">
+        <div class="content lang-section active" id="terms-zh-content">
+          <h2>服务条款</h2>
+
+          <div class="highlight-box">
+            <p>
+              使用 Luma
+              即表示您同意本服务条款。若您不同意，请停止安装或使用本应用。
+            </p>
+          </div>
+
+          <h3>1. 条款接受与适用范围</h3>
+          <p>
+            本条款适用于您对 Luma
+            应用及相关服务的访问和使用。本条款与隐私政策共同构成您与我们之间的协议。
+          </p>
+
+          <h3>2. 使用资格</h3>
+          <p>
+            您应具备签订本协议所需的法律能力。若您代表组织使用本应用，您声明已获得该组织授权。
+          </p>
+
+          <h3>3. 许可与使用限制</h3>
+          <ul>
+            <li>我们授予您一项可撤销、非独占、不可转让的个人使用许可</li>
+            <li>您不得逆向工程、反编译或尝试提取源代码（法律允许除外）</li>
+            <li>您不得将应用用于违法、侵权或干扰系统安全的行为</li>
+          </ul>
+
+          <h3>4. 订阅服务（Premium）</h3>
+          <ul>
+            <li>部分高级功能需订阅后可用</li>
+            <li>订阅费用、计费周期、自动续费规则由 Apple App Store 管理</li>
+            <li>取消订阅后，高级功能将在当前计费周期结束后失效</li>
+          </ul>
+
+          <h3>5. 知识产权</h3>
+          <p>
+            Luma
+            及其界面、文案、图形、代码和相关标识受知识产权法律保护。未经许可，不得复制、分发或用于商业再发布。
+          </p>
+
+          <h3>6. 非医疗建议声明</h3>
+          <p>
+            Luma
+            仅提供一般健康节律管理工具，不构成医疗建议、诊断或治疗方案。如有健康问题，请咨询专业医疗机构。
+          </p>
+
+          <h3>7. 免责声明</h3>
+          <ul>
+            <li>
+              应用按“现状”提供，我们不保证无错误、不中断或完全满足特定目的
+            </li>
+            <li>
+              对因系统环境、第三方平台或权限变更导致的功能受限，我们将尽力修复但不作绝对保证
+            </li>
+          </ul>
+
+          <h3>8. 责任限制</h3>
+          <p>
+            在法律允许范围内，我们不对间接、附带、特殊或后果性损失承担责任。若法律不允许排除部分责任，则按适用法律最低限度执行。
+          </p>
+
+          <h3>9. 终止与暂停</h3>
+          <p>
+            如您违反本条款，我们可暂停或终止您对相关服务的访问。您也可随时停止使用并卸载应用。
+          </p>
+
+          <h3>10. 条款变更</h3>
+          <p>
+            我们可能更新本条款。更新后的条款发布后生效。若您继续使用
+            Luma，即视为接受更新条款。
+          </p>
+
+          <h3>11. 适用法律</h3>
+          <p>
+            本条款适用您所在地区可适用的相关法律。若发生争议，双方应先友好协商处理。
+          </p>
+
+          <div class="contact-info">
+            <h3>联系我们</h3>
+            <p>若您对本条款有疑问，请联系：</p>
+            <p>
+              <strong>邮箱：</strong>
+              <a href="mailto:qq927884591@gmail.com">qq927884591@gmail.com</a>
+            </p>
+          </div>
+        </div>
+
+        <div class="content lang-section" id="terms-en-content">
+          <h2>Terms of Service</h2>
+
+          <div class="highlight-box">
+            <p>
+              By using Luma, you agree to these Terms of Service. If you do not
+              agree, do not install or use the app.
+            </p>
+          </div>
+
+          <h3>1. Acceptance and Scope</h3>
+          <p>
+            These Terms govern your access to and use of Luma and related
+            services. These Terms and the Privacy Policy form the agreement
+            between you and us.
+          </p>
+
+          <h3>2. Eligibility</h3>
+          <p>
+            You must have legal capacity to enter into this agreement. If you
+            use Luma for an organization, you represent you are authorized.
+          </p>
+
+          <h3>3. License and Restrictions</h3>
+          <ul>
+            <li>
+              We grant a revocable, non-exclusive, non-transferable personal
+              license
+            </li>
+            <li>
+              No reverse engineering, decompiling, or source extraction except
+              where permitted by law
+            </li>
+            <li>No illegal, infringing, or security-disruptive use</li>
+          </ul>
+
+          <h3>4. Subscription Services (Premium)</h3>
+          <ul>
+            <li>Certain advanced features require an active subscription</li>
+            <li>
+              Billing, renewal, and auto-renew terms are managed by Apple App
+              Store
+            </li>
+            <li>
+              After cancellation, premium features expire at the end of the
+              billing period
+            </li>
+          </ul>
+
+          <h3>5. Intellectual Property</h3>
+          <p>
+            Luma, including UI, copy, graphics, code, and branding, is protected
+            by intellectual property laws. Unauthorized reproduction or
+            commercial redistribution is prohibited.
+          </p>
+
+          <h3>6. No Medical Advice</h3>
+          <p>
+            Luma is a general wellness tool and does not provide medical advice,
+            diagnosis, or treatment. Consult qualified medical professionals for
+            health concerns.
+          </p>
+
+          <h3>7. Disclaimer</h3>
+          <ul>
+            <li>
+              The app is provided “as is” without guarantees of uninterrupted or
+              error-free operation
+            </li>
+            <li>
+              We will make reasonable efforts to address issues caused by
+              OS/platform changes
+            </li>
+          </ul>
+
+          <h3>8. Limitation of Liability</h3>
+          <p>
+            To the maximum extent permitted by law, we are not liable for
+            indirect, incidental, special, or consequential damages.
+          </p>
+
+          <h3>9. Suspension and Termination</h3>
+          <p>
+            We may suspend or terminate access if these Terms are violated. You
+            may stop using and uninstall Luma at any time.
+          </p>
+
+          <h3>10. Changes to Terms</h3>
+          <p>
+            We may update these Terms. Updated Terms become effective when
+            published. Continued use indicates acceptance.
+          </p>
+
+          <h3>11. Governing Law</h3>
+          <p>
+            These Terms are governed by applicable laws in your jurisdiction.
+            Parties should first attempt to resolve disputes in good faith.
+          </p>
+
+          <div class="contact-info">
+            <h3>Contact</h3>
+            <p>For questions regarding these Terms:</p>
+            <p>
+              <strong>Email:</strong>
+              <a href="mailto:qq927884591@gmail.com">qq927884591@gmail.com</a>
+            </p>
+          </div>
+        </div>
+      </div>
+
       <div class="page-section" id="support-page">
-        <!-- 中文版本 -->
         <div class="content lang-section active" id="support-zh-content">
           <h2>技术支持</h2>
 
           <div class="highlight-box">
             <p>
-              <strong>欢迎使用 Luma！</strong
-              >我们致力于为您提供最佳的健康监控体验。如果您在使用过程中遇到任何问题，请参考以下常见问题或联系我们。
+              欢迎使用
+              Luma。如在使用过程中遇到问题，请先查看常见问题；若仍未解决，请联系我们。
             </p>
           </div>
 
-          <h3>常见问题</h3>
-
-          <h3>1. 如何开始使用 Luma？</h3>
-          <p>首次启动 Luma 后，您将看到引导界面：</p>
+          <h3>1. 快速上手</h3>
           <ol>
-            <li>设置您的工作-休息周期（推荐：工作 25 分钟，休息 5 分钟）</li>
-            <li>配置喝水提醒频率</li>
-            <li>（可选）启用蓝牙检测功能，自动追踪您的离开时间</li>
-            <li>（可选）授予日历和屏幕录制权限，启用智能暂停功能</li>
+            <li>设置工作-休息节律（如 25/5）</li>
+            <li>配置喝水提醒间隔</li>
+            <li>可选开启蓝牙/摄像头检测以提升在场识别</li>
+            <li>可选授予日历与屏幕录制权限以启用智能暂停</li>
           </ol>
 
-          <h3>2. 为什么需要蓝牙权限？</h3>
-          <p>蓝牙权限用于检测您是否离开电脑：</p>
+          <h3>2. 为什么需要这些权限？</h3>
           <ul>
-            <li>应用会扫描您手机或其他蓝牙设备的信号强度</li>
-            <li>当信号减弱时，自动判断您已离开，开始计算休息时间</li>
-            <li>这是完全可选的功能，不启用也不影响核心提醒功能</li>
-            <li>所有检测都在本地进行，不会上传任何数据</li>
-            <li><strong>不会收集设备名称、MAC 地址或其他识别信息</strong></li>
+            <li><strong>蓝牙：</strong>判断离开/返回状态</li>
+            <li><strong>摄像头：</strong>本地在场识别，不录制不上传</li>
+            <li><strong>日历：</strong>会议期间自动暂停提醒</li>
+            <li><strong>屏幕录制：</strong>识别全屏应用或媒体播放状态</li>
+            <li><strong>辅助功能：</strong>检测系统空闲时长</li>
           </ul>
 
-          <h3>3. 为什么需要摄像头权限？</h3>
-          <p>摄像头权限用于检测您是否在电脑前：</p>
-          <ul>
-            <li>应用使用摄像头实时检测是否有人在电脑前</li>
-            <li><strong>不会录制、存储或传输任何图像或视频</strong></li>
-            <li>仅在本地进行实时分析，判断是否有人在场</li>
-            <li>这是完全可选的功能，可以只使用蓝牙检测</li>
-            <li>所有处理都在您的设备上完成，保护您的隐私</li>
-          </ul>
-
-          <h3>4. 智能暂停功能如何工作？</h3>
-          <p>智能暂停会在以下情况自动暂停提醒：</p>
-          <ul>
-            <li>
-              <strong>会议期间：</strong>读取您的日历，在会议时间内暂停提醒
-            </li>
-            <li>
-              <strong>全屏应用：</strong
-              >检测到您在使用全屏应用（如演示、游戏）时暂停
-            </li>
-            <li><strong>媒体播放：</strong>检测到您在观看视频或听音乐时暂停</li>
-            <li><strong>系统空闲：</strong>检测到您长时间未操作电脑时暂停</li>
-          </ul>
-
-          <h3>5. 如何调整提醒频率？</h3>
-          <p>您可以在设置中自定义提醒周期：</p>
+          <h3>3. 如何调整提醒频率？</h3>
           <ol>
-            <li>点击菜单栏图标，选择"设置"</li>
-            <li>在"健康节律"部分调整工作和休息时长</li>
-            <li>在"喝水提醒"部分设置提醒间隔</li>
-            <li>更改会立即生效</li>
+            <li>打开 Luma 设置</li>
+            <li>在健康节律中设置工作与休息时长</li>
+            <li>在喝水模块设置提醒间隔</li>
           </ol>
 
-          <h3>6. 提醒方式有哪些？</h3>
-          <p>Luma 采用非侵入式的提醒方式：</p>
-          <ul>
-            <li>
-              <strong>边缘光晕：</strong
-              >屏幕边缘出现柔和的彩色光晕，提示您该休息了
-            </li>
-            <li><strong>菜单栏图标：</strong>图标颜色变化，显示当前状态</li>
-            <li><strong>悬浮面板：</strong>喝水提醒时会显示小型悬浮面板</li>
-            <li><strong>无弹窗：</strong>不会打断您的工作流程</li>
-          </ul>
+          <h3>4. 如何管理订阅？</h3>
+          <p>订阅由 Apple App Store 管理，可在 App Store 账户中管理或取消。</p>
 
-          <h3>6. 如何查看使用统计？</h3>
-          <p>点击菜单栏图标，选择"分析"标签页：</p>
-          <ul>
-            <li>查看今日工作/休息时长</li>
-            <li>查看本周健康趋势</li>
-            <li>查看连续打卡天数和成就徽章</li>
-            <li>获取个性化的健康建议</li>
-          </ul>
-
-          <h3>7. Premium 会员有什么功能？</h3>
-          <p>Premium 会员解锁以下高级功能：</p>
-          <ul>
-            <li><strong>高级流体背景：</strong>更精美的视觉效果</li>
-            <li><strong>自定义主题：</strong>更多颜色和样式选择</li>
-            <li><strong>详细统计：</strong>更长时间范围的数据分析</li>
-            <li><strong>导出数据：</strong>导出您的健康数据</li>
-            <li><strong>优先支持：</strong>更快的技术支持响应</li>
-          </ul>
-
-          <h3>8. 如何取消订阅？</h3>
-          <p>订阅由 Apple App Store 管理：</p>
-          <ol>
-            <li>打开"系统设置" > "Apple ID"</li>
-            <li>点击"媒体与购买项目"</li>
-            <li>点击"管理"</li>
-            <li>找到 Luma 订阅，点击"取消订阅"</li>
-          </ol>
-
-          <h3>9. 数据存储在哪里？</h3>
-          <p>所有数据都存储在您的 Mac 本地：</p>
-          <ul>
-            <li>存储位置：<code>~/Library/Application Support/Luma/</code></li>
-            <li>不会上传到云端</li>
-            <li>卸载应用会自动删除所有数据</li>
-            <li>您可以手动备份该目录以保存数据</li>
-          </ul>
-
-          <h3>10. 应用占用多少系统资源？</h3>
-          <p>Luma 经过精心优化，资源占用极低：</p>
-          <ul>
-            <li><strong>内存：</strong>通常 < 50 MB</li>
-            <li><strong>CPU：</strong>空闲时 < 1%</li>
-            <li><strong>电池：</strong>对电池续航影响极小</li>
-            <li><strong>启动：</strong>开机自动启动，不影响启动速度</li>
-          </ul>
-
-          <h3>系统要求</h3>
-          <ul>
-            <li><strong>操作系统：</strong>macOS 14.0 或更高版本</li>
-            <li><strong>处理器：</strong>Apple Silicon (M1/M2/M3) 或 Intel</li>
-            <li><strong>存储空间：</strong>约 20 MB</li>
-          </ul>
-
-          <h3>已知问题</h3>
-          <ul>
-            <li>
-              <strong>蓝牙检测不准确：</strong
-              >请确保您的蓝牙设备（如手机）始终开启蓝牙
-            </li>
-            <li>
-              <strong>日历权限被拒绝：</strong>请在"系统设置" > "隐私与安全性" >
-              "日历"中授予权限
-            </li>
-            <li>
-              <strong>光晕不显示：</strong
-              >请检查是否启用了"减少动态效果"，这会影响动画显示
-            </li>
-          </ul>
-
-          <h3>反馈与建议</h3>
-          <p>我们非常重视您的反馈：</p>
-          <ul>
-            <li><strong>功能建议：</strong>告诉我们您希望看到的新功能</li>
-            <li><strong>Bug 报告：</strong>帮助我们改进应用质量</li>
-            <li><strong>使用体验：</strong>分享您的使用感受</li>
-          </ul>
+          <h3>5. 数据在哪里？</h3>
+          <p>默认存储在：<code>~/Library/Application Support/Luma/</code></p>
 
           <div class="contact-info">
             <h3>联系我们</h3>
-            <p>如果以上内容无法解决您的问题，请通过以下方式联系我们：</p>
             <p>
               <strong>邮箱：</strong>
               <a href="mailto:qq927884591@gmail.com">qq927884591@gmail.com</a>
             </p>
-            <p><strong>响应时间：</strong>我们通常会在 24-48 小时内回复</p>
             <p>
-              <strong>提示：</strong
-              >发送邮件时，请包含以下信息以便我们更快地帮助您：
+              <strong>建议附带：</strong>macOS 版本、Luma
+              版本、问题截图与复现步骤
             </p>
-            <ul>
-              <li>macOS 版本</li>
-              <li>Luma 版本（在"关于"中查看）</li>
-              <li>问题的详细描述和截图（如适用）</li>
-            </ul>
           </div>
         </div>
 
-        <!-- English Version -->
         <div class="content lang-section" id="support-en-content">
           <h2>Technical Support</h2>
 
           <div class="highlight-box">
             <p>
-              <strong>Welcome to Luma!</strong> We're committed to providing you
-              with the best health monitoring experience. If you encounter any
-              issues, please refer to the FAQ below or contact us.
+              Welcome to Luma. If you run into issues, check the FAQ first. If
+              the issue remains, contact us.
             </p>
           </div>
 
-          <h3>Frequently Asked Questions</h3>
-
-          <h3>1. How do I get started with Luma?</h3>
-          <p>
-            After launching Luma for the first time, you'll see the onboarding
-            guide:
-          </p>
+          <h3>1. Quick Start</h3>
           <ol>
-            <li>
-              Set your work-rest cycle (recommended: 25 minutes work, 5 minutes
-              rest)
-            </li>
-            <li>Configure water reminder frequency</li>
-            <li>
-              (Optional) Enable Bluetooth detection for automatic away time
-              tracking
-            </li>
-            <li>
-              (Optional) Grant calendar and screen recording permissions for
-              Smart Pause
-            </li>
+            <li>Set your work-rest rhythm (for example 25/5)</li>
+            <li>Configure water reminder interval</li>
+            <li>Optionally enable Bluetooth/camera presence detection</li>
+            <li>Optionally grant Calendar/Screen Recording for Smart Pause</li>
           </ol>
 
-          <h3>2. Why does Luma need Bluetooth permission?</h3>
-          <p>
-            Bluetooth permission is used to detect when you leave your computer:
-          </p>
+          <h3>2. Why Are Permissions Needed?</h3>
           <ul>
+            <li><strong>Bluetooth:</strong> detect away/return status</li>
+            <li><strong>Camera:</strong> on-device presence check only</li>
+            <li><strong>Calendar:</strong> pause reminders during meetings</li>
             <li>
-              The app scans signal strength of your phone or other Bluetooth
-              devices
+              <strong>Screen Recording:</strong> detect fullscreen/media states
             </li>
-            <li>
-              When signal weakens, it automatically determines you've left and
-              starts counting rest time
-            </li>
-            <li>
-              This is completely optional and doesn't affect core reminder
-              functionality
-            </li>
-            <li>All detection happens locally; no data is uploaded</li>
-            <li>
-              <strong
-                >Does not collect device names, MAC addresses, or other
-                identifying information</strong
-              >
-            </li>
+            <li><strong>Accessibility:</strong> detect system idle time</li>
           </ul>
 
-          <h3>3. Why does Luma need Camera permission?</h3>
-          <p>
-            Camera permission is used to detect if you're in front of your
-            computer:
-          </p>
-          <ul>
-            <li>The app uses the camera to detect presence in real-time</li>
-            <li>
-              <strong
-                >Does not record, store, or transmit any images or
-                videos</strong
-              >
-            </li>
-            <li>
-              Only performs real-time local analysis to determine presence
-            </li>
-            <li>
-              This is completely optional; you can use Bluetooth detection only
-            </li>
-            <li>
-              All processing is done on your device to protect your privacy
-            </li>
-          </ul>
-
-          <h3>4. How does Smart Pause work?</h3>
-          <p>Smart Pause automatically pauses reminders in these situations:</p>
-          <ul>
-            <li>
-              <strong>During meetings:</strong> Reads your calendar and pauses
-              during scheduled meetings
-            </li>
-            <li>
-              <strong>Fullscreen apps:</strong> Pauses when you're using
-              fullscreen apps (presentations, games)
-            </li>
-            <li>
-              <strong>Media playback:</strong> Pauses when you're watching
-              videos or listening to music
-            </li>
-            <li>
-              <strong>System idle:</strong> Pauses when you haven't used your
-              computer for a while
-            </li>
-          </ul>
-
-          <h3>4. How do I adjust reminder frequency?</h3>
-          <p>You can customize reminder cycles in Settings:</p>
+          <h3>3. How to Adjust Reminder Frequency?</h3>
           <ol>
-            <li>Click the menu bar icon and select "Settings"</li>
-            <li>
-              Adjust work and rest duration in the "Health Rhythm" section
-            </li>
-            <li>Set reminder interval in the "Water Reminder" section</li>
-            <li>Changes take effect immediately</li>
+            <li>Open Luma Settings</li>
+            <li>Set work/rest durations in Health Rhythm</li>
+            <li>Set interval in Water Reminder</li>
           </ol>
 
-          <h3>5. What reminder methods does Luma use?</h3>
-          <p>Luma uses non-intrusive reminder methods:</p>
-          <ul>
-            <li>
-              <strong>Edge glow:</strong> Soft colored glow appears at screen
-              edges when it's time to rest
-            </li>
-            <li>
-              <strong>Menu bar icon:</strong> Icon color changes to show current
-              status
-            </li>
-            <li>
-              <strong>Floating panel:</strong> Small floating panel appears for
-              water reminders
-            </li>
-            <li><strong>No popups:</strong> Won't interrupt your workflow</li>
-          </ul>
+          <h3>4. How to Manage Subscription?</h3>
+          <p>Subscriptions are managed by Apple App Store account settings.</p>
 
-          <h3>6. How do I view usage statistics?</h3>
-          <p>Click the menu bar icon and select the "Analysis" tab:</p>
-          <ul>
-            <li>View today's work/rest duration</li>
-            <li>View this week's health trends</li>
-            <li>View streak days and achievement badges</li>
-            <li>Get personalized health recommendations</li>
-          </ul>
-
-          <h3>7. What features does Premium membership include?</h3>
-          <p>Premium membership unlocks these advanced features:</p>
-          <ul>
-            <li>
-              <strong>Premium fluid backgrounds:</strong> More beautiful visual
-              effects
-            </li>
-            <li>
-              <strong>Custom themes:</strong> More color and style options
-            </li>
-            <li>
-              <strong>Detailed statistics:</strong> Longer time range data
-              analysis
-            </li>
-            <li><strong>Data export:</strong> Export your health data</li>
-            <li>
-              <strong>Priority support:</strong> Faster technical support
-              response
-            </li>
-          </ul>
-
-          <h3>8. How do I cancel my subscription?</h3>
-          <p>Subscriptions are managed by Apple App Store:</p>
-          <ol>
-            <li>Open "System Settings" > "Apple ID"</li>
-            <li>Click "Media & Purchases"</li>
-            <li>Click "Manage"</li>
-            <li>Find Luma subscription and click "Cancel Subscription"</li>
-          </ol>
-
-          <h3>9. Where is my data stored?</h3>
-          <p>All data is stored locally on your Mac:</p>
-          <ul>
-            <li>
-              Storage location: <code>~/Library/Application Support/Luma/</code>
-            </li>
-            <li>Not uploaded to the cloud</li>
-            <li>Uninstalling the app automatically deletes all data</li>
-            <li>You can manually backup this directory to save your data</li>
-          </ul>
-
-          <h3>10. How much system resources does Luma use?</h3>
-          <p>Luma is carefully optimized with minimal resource usage:</p>
-          <ul>
-            <li><strong>Memory:</strong> Typically < 50 MB</li>
-            <li><strong>CPU:</strong> < 1% when idle</li>
-            <li><strong>Battery:</strong> Minimal impact on battery life</li>
-            <li>
-              <strong>Startup:</strong> Auto-starts at login without affecting
-              startup speed
-            </li>
-          </ul>
-
-          <h3>System Requirements</h3>
-          <ul>
-            <li><strong>Operating System:</strong> macOS 14.0 or later</li>
-            <li>
-              <strong>Processor:</strong> Apple Silicon (M1/M2/M3) or Intel
-            </li>
-            <li><strong>Storage:</strong> Approximately 20 MB</li>
-          </ul>
-
-          <h3>Known Issues</h3>
-          <ul>
-            <li>
-              <strong>Inaccurate Bluetooth detection:</strong> Ensure your
-              Bluetooth device (e.g., phone) always has Bluetooth enabled
-            </li>
-            <li>
-              <strong>Calendar permission denied:</strong> Grant permission in
-              "System Settings" > "Privacy & Security" > "Calendar"
-            </li>
-            <li>
-              <strong>Glow not showing:</strong> Check if "Reduce Motion" is
-              enabled, which affects animation display
-            </li>
-          </ul>
-
-          <h3>Feedback & Suggestions</h3>
-          <p>We value your feedback:</p>
-          <ul>
-            <li>
-              <strong>Feature requests:</strong> Tell us what new features you'd
-              like to see
-            </li>
-            <li><strong>Bug reports:</strong> Help us improve app quality</li>
-            <li>
-              <strong>User experience:</strong> Share your experience using Luma
-            </li>
-          </ul>
+          <h3>5. Where Is Data Stored?</h3>
+          <p>Default path: <code>~/Library/Application Support/Luma/</code></p>
 
           <div class="contact-info">
-            <h3>Contact Us</h3>
-            <p>If the above doesn't solve your problem, please contact us:</p>
+            <h3>Contact</h3>
             <p>
               <strong>Email:</strong>
               <a href="mailto:qq927884591@gmail.com">qq927884591@gmail.com</a>
             </p>
             <p>
-              <strong>Response time:</strong> We typically respond within 24-48
-              hours
+              <strong>Please include:</strong> macOS version, Luma version,
+              screenshots, and repro steps.
             </p>
-            <p>
-              <strong>Tip:</strong> When emailing, please include the following
-              information to help us assist you faster:
-            </p>
-            <ul>
-              <li>macOS version</li>
-              <li>Luma version (check in "About")</li>
-              <li>
-                Detailed problem description and screenshots (if applicable)
-              </li>
-            </ul>
           </div>
         </div>
       </div>
-      <!-- 技术支持页面结束 -->
     </div>
 
     <footer>
@@ -1070,143 +823,86 @@
     </footer>
 
     <script>
-      // 获取 URL 参数
+      const pages = ["privacy", "terms", "support"];
+      const langs = ["zh", "en"];
+
       function getUrlParameter(name) {
-        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)");
-        var results = regex.exec(location.search);
-        return results === null
-          ? ""
-          : decodeURIComponent(results[1].replace(/\+/g, " "));
+        const url = new URL(window.location.href);
+        return url.searchParams.get(name) || "";
       }
 
-      // 初始化页面
-      function initPage() {
-        const page = getUrlParameter("page") || "privacy";
-        const lang = getUrlParameter("lang") || "zh";
-
-        // 先设置语言按钮状态
-        document
-          .querySelectorAll(".language-toggle button")
-          .forEach((button) => {
-            button.classList.remove("active");
-            if (
-              (lang === "zh" && button.textContent.includes("中文")) ||
-              (lang === "en" && button.textContent.includes("English"))
-            ) {
-              button.classList.add("active");
-            }
-          });
-
-        // 切换到指定页面（这会自动处理语言显示）
-        switchPage(page);
-      }
-
-      // 切换页面
-      function switchPage(page) {
-        // 隐藏所有页面
-        document.querySelectorAll(".page-section").forEach((section) => {
-          section.classList.remove("active");
-        });
-
-        // 显示选中的页面
-        const pageElement = document.getElementById(page + "-page");
-        if (pageElement) {
-          pageElement.classList.add("active");
-        }
-
-        // 更新按钮状态
-        document.querySelectorAll(".page-toggle button").forEach((button) => {
-          button.classList.remove("active");
-        });
-        const tabButton = document.getElementById(page + "-tab");
-        if (tabButton) {
-          tabButton.classList.add("active");
-        }
-
-        // 获取当前语言
-        const currentLang = document
-          .querySelector(".language-toggle button.active")
-          ?.textContent.includes("中文")
-          ? "zh"
-          : "en";
-
-        // 确保显示正确语言的内容
-        document.querySelectorAll(".lang-section").forEach((section) => {
-          section.classList.remove("active");
-        });
-
-        if (page === "privacy") {
-          const langElement = document.getElementById(currentLang + "-content");
-          if (langElement) {
-            langElement.classList.add("active");
-          }
-        } else if (page === "support") {
-          const langElement = document.getElementById(
-            "support-" + currentLang + "-content"
-          );
-          if (langElement) {
-            langElement.classList.add("active");
-          }
-        }
-
-        // 更新 URL（不刷新页面）
-        const url = new URL(window.location);
+      function setQuery(page, lang) {
+        const url = new URL(window.location.href);
         url.searchParams.set("page", page);
-        window.history.pushState({}, "", url);
-      }
-
-      function switchLanguage(lang) {
-        // 隐藏所有语言部分
-        document.querySelectorAll(".lang-section").forEach((section) => {
-          section.classList.remove("active");
-        });
-
-        // 获取当前页面
-        const currentPageElement = document.querySelector(
-          ".page-section.active"
-        );
-        if (!currentPageElement) return;
-
-        const currentPage = currentPageElement.id.replace("-page", "");
-
-        // 显示选中语言的内容
-        if (currentPage === "privacy") {
-          const targetElement = document.getElementById(lang + "-content");
-          if (targetElement) {
-            targetElement.classList.add("active");
-          }
-        } else if (currentPage === "support") {
-          const targetElement = document.getElementById(
-            "support-" + lang + "-content"
-          );
-          if (targetElement) {
-            targetElement.classList.add("active");
-          }
-        }
-
-        // 更新按钮状态
-        document
-          .querySelectorAll(".language-toggle button")
-          .forEach((button) => {
-            button.classList.remove("active");
-          });
-
-        // 找到被点击的按钮并激活
-        const buttons = document.querySelectorAll(".language-toggle button");
-        buttons.forEach((button) => {
-          if (button.textContent.includes(lang === "zh" ? "中文" : "English")) {
-            button.classList.add("active");
-          }
-        });
-
-        // 更新 URL
-        const url = new URL(window.location);
         url.searchParams.set("lang", lang);
         window.history.pushState({}, "", url);
       }
 
-      // 页面加载时初始化
+      function applyPage(page) {
+        pages.forEach((p) => {
+          const section = document.getElementById(p + "-page");
+          const tab = document.getElementById(p + "-tab");
+          if (section) section.classList.toggle("active", p === page);
+          if (tab) tab.classList.toggle("active", p === page);
+        });
+      }
+
+      function applyLanguage(lang) {
+        document
+          .querySelectorAll(".language-toggle button")
+          .forEach((button) => {
+            button.classList.toggle("active", button.dataset.lang === lang);
+          });
+
+        pages.forEach((page) => {
+          langs.forEach((l) => {
+            const content = document.getElementById(
+              page + "-" + l + "-content"
+            );
+            if (content) content.classList.toggle("active", l === lang);
+          });
+        });
+      }
+
+      function switchPage(page) {
+        const currentLang =
+          document.querySelector(".language-toggle button.active")?.dataset
+            .lang || "zh";
+        applyPage(page);
+        applyLanguage(currentLang);
+        setQuery(page, currentLang);
+      }
+
+      function switchLanguage(lang) {
+        const currentPage =
+          document.querySelector(".page-toggle button.active")?.dataset.page ||
+          "privacy";
+        applyPage(currentPage);
+        applyLanguage(lang);
+        setQuery(currentPage, lang);
+      }
+
+      function initPage() {
+        const pageParam = getUrlParameter("page");
+        const langParam = getUrlParameter("lang");
+        const page = pages.includes(pageParam) ? pageParam : "privacy";
+        const lang = langs.includes(langParam) ? langParam : "zh";
+
+        applyPage(page);
+        applyLanguage(lang);
+        setQuery(page, lang);
+      }
+
+      document.querySelectorAll(".page-toggle button").forEach((button) => {
+        button.addEventListener("click", () => switchPage(button.dataset.page));
+      });
+
+      document.querySelectorAll(".language-toggle button").forEach((button) => {
+        button.addEventListener("click", () =>
+          switchLanguage(button.dataset.lang)
+        );
+      });
+
       window.addEventListener("DOMContentLoaded", initPage);
     </script>
   </body>
