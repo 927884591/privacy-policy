@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" class="no-js">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,6 +8,10 @@
       name="description"
       content="Luma Focus Privacy Policy, Terms of Use (EULA), and Support"
     />
+    <script>
+      document.documentElement.classList.remove("no-js");
+      document.documentElement.classList.add("js");
+    </script>
     <style>
       :root {
         --bg: #f5f5f7;
@@ -115,19 +119,37 @@
       }
 
       .page-section {
-        display: none;
-      }
-
-      .page-section.active {
         display: block;
       }
 
       .lang-section {
+        display: block;
+      }
+
+      html.js .page-section {
         display: none;
       }
 
-      .lang-section.active {
+      html.js .page-section.active {
         display: block;
+      }
+
+      html.js .lang-section {
+        display: none;
+      }
+
+      html.js .lang-section.active {
+        display: block;
+      }
+
+      .noscript-tip {
+        margin-bottom: 16px;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        background: #fff9e8;
+        color: #6a4c00;
+        padding: 12px 14px;
+        font-size: 14px;
       }
 
       .content {
@@ -241,8 +263,8 @@
         </div>
 
         <div class="toggle-row language-toggle" role="tablist" aria-label="Language tabs">
-          <button class="active" data-lang="zh" role="tab">中文</button>
-          <button data-lang="en" role="tab">English</button>
+          <button data-lang="zh" role="tab">中文</button>
+          <button class="active" data-lang="en" role="tab">English</button>
         </div>
 
         <div class="quick-links">
@@ -258,6 +280,15 @@
               >https://927884591.github.io/privacy-policy/?page=terms&lang=en</a
             >
           </p>
+          <p>
+            <strong>Apple Standard EULA:</strong>
+            <a
+              href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >https://www.apple.com/legal/internet-services/itunes/dev/stdeula/</a
+            >
+          </p>
         </div>
 
         <p class="last-updated">
@@ -266,8 +297,16 @@
       </header>
 
       <main>
+        <noscript>
+          <div class="noscript-tip">
+            JavaScript is disabled. All legal content is shown on this page. Direct links:
+            <a href="https://927884591.github.io/privacy-policy/?page=privacy&lang=en">Privacy</a>
+            |
+            <a href="https://927884591.github.io/privacy-policy/?page=terms&lang=en">Terms (EULA)</a>
+          </div>
+        </noscript>
         <section class="page-section active" id="privacy-page">
-          <article class="content lang-section active" id="privacy-zh-content">
+          <article class="content lang-section" id="privacy-zh-content">
             <h2>隐私政策</h2>
 
             <div class="highlight">
@@ -365,7 +404,7 @@
             </div>
           </article>
 
-          <article class="content lang-section" id="privacy-en-content">
+          <article class="content lang-section active" id="privacy-en-content">
             <h2>Privacy Policy</h2>
 
             <div class="highlight">
@@ -709,7 +748,7 @@
     <script>
       const pages = ["privacy", "terms", "support"];
       const langs = ["zh", "en"];
-      const pageAliases = { eula: "terms" };
+      const pageAliases = { eula: "terms", "terms-of-use": "terms" };
 
       function getUrlParameter(name) {
         const url = new URL(window.location.href);
@@ -722,7 +761,7 @@
       }
 
       function normalizeLang(lang) {
-        return langs.includes(lang) ? lang : "zh";
+        return langs.includes(lang) ? lang : "en";
       }
 
       function setQuery(page, lang) {
@@ -759,7 +798,7 @@
       function switchPage(page) {
         const currentLang =
           document.querySelector(".language-toggle button.active")?.dataset.lang ||
-          "zh";
+          "en";
         const normalizedPage = normalizePage(page);
         const normalizedLang = normalizeLang(currentLang);
 
