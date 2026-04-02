@@ -108,8 +108,16 @@
         font-size: 13px;
       }
 
-      .quick-links p + p {
-        margin-top: 6px;
+      .quick-links p {
+        margin-bottom: 6px;
+      }
+
+      .quick-links ul {
+        margin: 8px 0 0 20px;
+      }
+
+      .quick-links li {
+        margin-bottom: 4px;
       }
 
       .last-updated {
@@ -210,14 +218,6 @@
         text-decoration: underline;
       }
 
-      code {
-        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-          "Liberation Mono", "Courier New", monospace;
-        background: #f3f4f6;
-        padding: 1px 4px;
-        border-radius: 4px;
-      }
-
       footer {
         text-align: center;
         color: var(--muted);
@@ -265,17 +265,28 @@
         <div class="toggle-row language-toggle" role="tablist" aria-label="Language tabs">
           <button data-lang="zh" role="tab">中文</button>
           <button class="active" data-lang="en" role="tab">English</button>
+          <button data-lang="pl" role="tab">Polski</button>
+          <button data-lang="ms" role="tab">Bahasa Melayu</button>
+          <button data-lang="it" role="tab">Italiano</button>
+          <button data-lang="es" role="tab">Español (España)</button>
+          <button data-lang="hi" role="tab">हिन्दी</button>
+          <button data-lang="tr" role="tab">Türkçe</button>
         </div>
 
         <div class="quick-links">
+          <p><strong>Privacy Policy URLs (Required Languages)</strong></p>
+          <ul>
+            <li><a href="https://927884591.github.io/privacy-policy/?page=privacy&lang=en">English: ?page=privacy&amp;lang=en</a></li>
+            <li><a href="https://927884591.github.io/privacy-policy/?page=privacy&lang=zh">中文: ?page=privacy&amp;lang=zh</a></li>
+            <li><a href="https://927884591.github.io/privacy-policy/?page=privacy&lang=pl">Polski: ?page=privacy&amp;lang=pl</a></li>
+            <li><a href="https://927884591.github.io/privacy-policy/?page=privacy&lang=ms">Bahasa Melayu: ?page=privacy&amp;lang=ms</a></li>
+            <li><a href="https://927884591.github.io/privacy-policy/?page=privacy&lang=it">Italiano: ?page=privacy&amp;lang=it</a></li>
+            <li><a href="https://927884591.github.io/privacy-policy/?page=privacy&lang=es">Español (España): ?page=privacy&amp;lang=es</a></li>
+            <li><a href="https://927884591.github.io/privacy-policy/?page=privacy&lang=hi">हिन्दी: ?page=privacy&amp;lang=hi</a></li>
+            <li><a href="https://927884591.github.io/privacy-policy/?page=privacy&lang=tr">Türkçe: ?page=privacy&amp;lang=tr</a></li>
+          </ul>
           <p>
-            <strong>Privacy URL:</strong>
-            <a href="https://927884591.github.io/privacy-policy/?page=privacy&lang=en"
-              >https://927884591.github.io/privacy-policy/?page=privacy&lang=en</a
-            >
-          </p>
-          <p>
-            <strong>Terms of Use (EULA) URL:</strong>
+            <strong>Terms URL:</strong>
             <a href="https://927884591.github.io/privacy-policy/?page=terms&lang=en"
               >https://927884591.github.io/privacy-policy/?page=terms&lang=en</a
             >
@@ -292,7 +303,7 @@
         </div>
 
         <p class="last-updated">
-          最后更新 | Last Updated: 2026年3月16日 | March 16, 2026
+          最后更新 | Last Updated: 2026年4月2日 | April 2, 2026
         </p>
       </header>
 
@@ -300,442 +311,339 @@
         <noscript>
           <div class="noscript-tip">
             JavaScript is disabled. All legal content is shown on this page. Direct links:
-            <a href="https://927884591.github.io/privacy-policy/?page=privacy&lang=en">Privacy</a>
+            <a href="https://927884591.github.io/privacy-policy/?page=privacy&lang=en">Privacy (EN)</a>
             |
-            <a href="https://927884591.github.io/privacy-policy/?page=terms&lang=en">Terms (EULA)</a>
+            <a href="https://927884591.github.io/privacy-policy/?page=privacy&lang=pl">Privacy (PL)</a>
+            |
+            <a href="https://927884591.github.io/privacy-policy/?page=privacy&lang=ms">Privacy (MS)</a>
+            |
+            <a href="https://927884591.github.io/privacy-policy/?page=privacy&lang=it">Privacy (IT)</a>
+            |
+            <a href="https://927884591.github.io/privacy-policy/?page=privacy&lang=es">Privacy (ES)</a>
+            |
+            <a href="https://927884591.github.io/privacy-policy/?page=privacy&lang=hi">Privacy (HI)</a>
+            |
+            <a href="https://927884591.github.io/privacy-policy/?page=privacy&lang=tr">Privacy (TR)</a>
           </div>
         </noscript>
+
         <section class="page-section active" id="privacy-page">
           <article class="content lang-section" id="privacy-zh-content">
             <h2>隐私政策</h2>
-
             <div class="highlight">
               <p>
                 <strong>核心承诺：</strong>Luma Focus 采用本地优先设计。健康提醒、节律、统计和离座检测相关数据主要保存在您的 Mac 本地，不会上传到我们的自建服务器。
               </p>
             </div>
-
             <h3>1. 适用范围</h3>
-            <p>
-              本政策适用于 Luma Focus（以下简称“本应用”）在 macOS 上的使用场景。
-            </p>
-
+            <p>本政策适用于 Luma Focus 在 macOS 上的使用场景。</p>
             <h3>2. 我们处理的数据类型</h3>
             <ul>
-              <li>
-                <strong>提醒与节律数据：</strong>工作/休息周期设置、提醒触发与响应记录、统计汇总。
-              </li>
-              <li>
-                <strong>健康记录：</strong>饮水打卡等由您手动输入的数据。
-              </li>
-              <li>
-                <strong>离座检测信号：</strong>蓝牙信号强度、在场检测结果（如“在场/离开”状态）。
-              </li>
-              <li>
-                <strong>应用列表元数据（可选）：</strong>当您配置“前台应用自动暂停提醒”时，本应用会读取本机应用目录中的应用名称/Bundle ID（仅本地处理）。
-              </li>
-              <li>
-                <strong>订阅状态信息：</strong>通过 Apple StoreKit 返回的交易与订阅状态信息。
-              </li>
+              <li><strong>提醒与节律数据：</strong>工作/休息周期设置、提醒触发与响应记录。</li>
+              <li><strong>健康记录：</strong>饮水打卡等由您手动输入的数据。</li>
+              <li><strong>离座检测信号：</strong>蓝牙信号强度、在场检测结果（在场/离开）。</li>
+              <li><strong>应用列表元数据（可选）：</strong>读取本机应用名称/Bundle ID，仅本地处理。</li>
+              <li><strong>订阅状态信息：</strong>由 Apple StoreKit 返回的交易与订阅状态。</li>
             </ul>
-
             <h3>3. 权限与用途</h3>
             <ul>
               <li><strong>蓝牙权限（必需）：</strong>用于离座/返回检测。</li>
-              <li>
-                <strong>摄像头权限（可选）：</strong>用于离座状态二次校验；仅本机实时处理，不保存图像或视频。
-              </li>
-              <li>
-                <strong>应用目录读取权限（可选）：</strong>用于读取已安装应用元数据以支持自动暂停应用配置。
-              </li>
+              <li><strong>摄像头权限（可选）：</strong>用于离座状态二次校验，仅本机处理，不保存图像或视频。</li>
+              <li><strong>应用目录读取权限（可选）：</strong>用于自动暂停应用配置。</li>
             </ul>
-            <p>
-              本版本不依赖日历、屏幕录制或辅助功能权限作为核心检测条件。
-            </p>
-
             <h3>4. 数据存储与保留</h3>
             <ul>
-              <li>数据保存在 macOS 沙盒容器内（如 SwiftData / UserDefaults 本地存储）。</li>
-              <li>我们不提供自建云端同步服务，也不将上述本地健康数据上传到自建服务器。</li>
+              <li>数据保存在 macOS 沙盒容器内（如 SwiftData / UserDefaults）。</li>
+              <li>我们不提供自建云端同步，也不会上传健康数据到自建服务器。</li>
               <li>您可在应用内清理数据，或通过卸载应用移除本地数据。</li>
             </ul>
-
             <h3>5. 网络与第三方处理</h3>
             <ul>
               <li>订阅购买、续费、恢复购买由 Apple App Store / StoreKit 处理。</li>
-              <li>我们不会向广告网络或数据经纪商出售您的个人数据。</li>
-              <li>我们不使用自建服务收集您的健康日志。</li>
+              <li>我们不会向广告网络或数据经纪商出售个人数据。</li>
             </ul>
-
-            <h3>6. 儿童隐私</h3>
-            <p>
-              本应用不面向儿童提供定向服务。如您认为存在未成年人不当提交信息，请联系我们。
-            </p>
-
-            <h3>7. 您的权利</h3>
-            <ul>
-              <li><strong>访问与查看：</strong>您可在应用内查看主要记录。</li>
-              <li><strong>删除：</strong>您可清理本地数据或卸载应用。</li>
-              <li><strong>撤回权限：</strong>可在系统设置中随时关闭蓝牙或摄像头权限。</li>
-            </ul>
-
-            <h3>8. 政策变更</h3>
-            <p>
-              我们可能根据产品和法规变化更新本政策。更新后会在本页面发布最新版本与日期。
-            </p>
-
-            <h3>9. 联系方式</h3>
-            <p>
-              邮箱：
-              <a href="mailto:qq927884591@gmail.com">qq927884591@gmail.com</a>
-            </p>
-
-            <div class="note">
-              <p>
-                相关链接：
-                <a href="https://927884591.github.io/privacy-policy/?page=privacy&lang=zh"
-                  >隐私政策固定链接</a
-                >
-                ｜
-                <a href="https://927884591.github.io/privacy-policy/?page=terms&lang=zh"
-                  >使用条款(EULA)链接</a
-                >
-              </p>
-            </div>
+            <h3>6. 联系方式</h3>
+            <p>邮箱：<a href="mailto:qq927884591@gmail.com">qq927884591@gmail.com</a></p>
           </article>
 
           <article class="content lang-section active" id="privacy-en-content">
             <h2>Privacy Policy</h2>
-
             <div class="highlight">
               <p>
                 <strong>Core Commitment:</strong> Luma Focus is local-first. Health reminders, rhythm records, analytics, and step-away detection data are primarily stored on your Mac. We do not upload this data to our own servers.
               </p>
             </div>
-
             <h3>1. Scope</h3>
-            <p>
-              This Privacy Policy applies to Luma Focus on macOS.
-            </p>
-
+            <p>This Privacy Policy applies to Luma Focus on macOS.</p>
             <h3>2. Data We Process</h3>
             <ul>
-              <li>
-                <strong>Reminder and rhythm data:</strong> work/rest settings, reminder events, and response logs.
-              </li>
-              <li>
-                <strong>Wellness records:</strong> data you manually enter, such as water logs.
-              </li>
-              <li>
-                <strong>Step-away signals:</strong> Bluetooth signal strength and presence outcomes (for example, present/away state).
-              </li>
-              <li>
-                <strong>Installed app metadata (optional):</strong> when you configure auto-pause app lists, the app reads local app metadata (name/Bundle ID) from this Mac only.
-              </li>
-              <li>
-                <strong>Subscription status data:</strong> transaction and entitlement status returned by Apple StoreKit.
-              </li>
+              <li><strong>Reminder and rhythm data:</strong> work/rest settings, reminder events, and response logs.</li>
+              <li><strong>Wellness records:</strong> data you manually enter, such as water logs.</li>
+              <li><strong>Step-away signals:</strong> Bluetooth signal strength and presence outcomes.</li>
+              <li><strong>Installed app metadata (optional):</strong> local app name/Bundle ID for auto-pause settings.</li>
+              <li><strong>Subscription status data:</strong> transaction and entitlement status returned by Apple StoreKit.</li>
             </ul>
-
             <h3>3. Permissions and Purposes</h3>
             <ul>
               <li><strong>Bluetooth (required):</strong> step-away / return detection.</li>
-              <li>
-                <strong>Camera (optional):</strong> secondary on-device verification for step-away status; no image/video storage.
-              </li>
-              <li>
-                <strong>App-directory read access (optional):</strong> read local installed app metadata for auto-pause app configuration.
-              </li>
+              <li><strong>Camera (optional):</strong> on-device verification only, no image/video storage.</li>
+              <li><strong>App-directory read access (optional):</strong> local app metadata for auto-pause setup.</li>
             </ul>
-            <p>
-              This release does not rely on Calendar, Screen Recording, or Accessibility permissions for its core detection flow.
-            </p>
-
             <h3>4. Storage and Retention</h3>
             <ul>
-              <li>Data is stored in your macOS app sandbox container (for example, SwiftData / UserDefaults local storage).</li>
-              <li>We do not provide self-hosted cloud sync and do not upload your health logs to our own servers.</li>
+              <li>Data is stored in your macOS sandbox container.</li>
+              <li>We do not provide self-hosted cloud sync and do not upload health logs to our own servers.</li>
               <li>You can clear data in-app or remove local data by uninstalling the app.</li>
             </ul>
-
             <h3>5. Network and Third Parties</h3>
             <ul>
               <li>Subscription purchase, renewal, and restore are handled by Apple App Store / StoreKit.</li>
               <li>We do not sell personal data to ad networks or data brokers.</li>
-              <li>We do not use our own backend to collect your wellness logs.</li>
             </ul>
+            <h3>6. Contact</h3>
+            <p>Email: <a href="mailto:qq927884591@gmail.com">qq927884591@gmail.com</a></p>
+          </article>
 
-            <h3>6. Children’s Privacy</h3>
-            <p>
-              The app is not directed to children. If you believe a minor submitted data inappropriately, contact us.
-            </p>
-
-            <h3>7. Your Rights</h3>
-            <ul>
-              <li><strong>Access:</strong> view key records in-app.</li>
-              <li><strong>Deletion:</strong> clear local data in-app or uninstall.</li>
-              <li><strong>Permission control:</strong> revoke Bluetooth or Camera permissions in System Settings at any time.</li>
-            </ul>
-
-            <h3>8. Policy Updates</h3>
-            <p>
-              We may update this policy to reflect product or legal changes. The latest version and date are published on this page.
-            </p>
-
-            <h3>9. Contact</h3>
-            <p>
-              Email:
-              <a href="mailto:qq927884591@gmail.com">qq927884591@gmail.com</a>
-            </p>
-
-            <div class="note">
+          <article class="content lang-section" id="privacy-pl-content">
+            <h2>Polityka prywatności</h2>
+            <div class="highlight">
               <p>
-                Related links:
-                <a href="https://927884591.github.io/privacy-policy/?page=privacy&lang=en"
-                  >Privacy Policy (permalink)</a
-                >
-                |
-                <a href="https://927884591.github.io/privacy-policy/?page=terms&lang=en"
-                  >Terms of Use (EULA)</a
-                >
+                <strong>Podstawowe zobowiązanie:</strong> Luma Focus działa lokalnie. Dane zdrowotne i dane wykrywania odejścia są przechowywane głównie na Twoim Macu i nie są przesyłane na nasze własne serwery.
               </p>
             </div>
+            <h3>1. Zakres</h3>
+            <p>Ta polityka dotyczy aplikacji Luma Focus na macOS.</p>
+            <h3>2. Jakie dane przetwarzamy</h3>
+            <ul>
+              <li>Dane przypomnień i rytmu pracy/odpoczynku.</li>
+              <li>Dane wellness wprowadzane ręcznie (np. nawodnienie).</li>
+              <li>Sygnały oddalenia: Bluetooth i status obecności.</li>
+              <li>Opcjonalnie lokalne metadane aplikacji (nazwa/Bundle ID).</li>
+              <li>Status subskrypcji z Apple StoreKit.</li>
+            </ul>
+            <h3>3. Uprawnienia</h3>
+            <ul>
+              <li>Bluetooth (wymagane) do wykrywania odejścia/powrotu.</li>
+              <li>Kamera (opcjonalnie) do dodatkowej weryfikacji lokalnej, bez zapisu obrazu/wideo.</li>
+            </ul>
+            <h3>4. Przechowywanie</h3>
+            <p>Dane są przechowywane lokalnie w piaskownicy aplikacji macOS. Możesz je usunąć w aplikacji lub odinstalowując aplikację.</p>
+            <h3>5. Kontakt</h3>
+            <p>E-mail: <a href="mailto:qq927884591@gmail.com">qq927884591@gmail.com</a></p>
+          </article>
+
+          <article class="content lang-section" id="privacy-ms-content">
+            <h2>Dasar Privasi</h2>
+            <div class="highlight">
+              <p>
+                <strong>Komitmen teras:</strong> Luma Focus berasaskan storan tempatan. Data kesihatan dan pengesanan meninggalkan tempat disimpan terutamanya pada Mac anda, dan tidak dimuat naik ke pelayan kami sendiri.
+              </p>
+            </div>
+            <h3>1. Skop</h3>
+            <p>Dasar ini terpakai untuk Luma Focus pada macOS.</p>
+            <h3>2. Data yang diproses</h3>
+            <ul>
+              <li>Data peringatan dan ritma kerja/rehat.</li>
+              <li>Rekod kesejahteraan yang anda masukkan secara manual.</li>
+              <li>Isyarat beredar: Bluetooth dan status hadir/tiada.</li>
+              <li>Metadata aplikasi tempatan (pilihan) untuk auto-jeda.</li>
+              <li>Status langganan daripada Apple StoreKit.</li>
+            </ul>
+            <h3>3. Kebenaran</h3>
+            <ul>
+              <li>Bluetooth (wajib) untuk pengesanan beredar/kembali.</li>
+              <li>Kamera (pilihan) untuk pengesahan tempatan; tiada simpanan imej/video.</li>
+            </ul>
+            <h3>4. Penyimpanan data</h3>
+            <p>Data disimpan secara tempatan dalam sandbox macOS. Anda boleh padam dalam aplikasi atau nyahpasang aplikasi.</p>
+            <h3>5. Hubungi</h3>
+            <p>E-mel: <a href="mailto:qq927884591@gmail.com">qq927884591@gmail.com</a></p>
+          </article>
+
+          <article class="content lang-section" id="privacy-it-content">
+            <h2>Informativa sulla privacy</h2>
+            <div class="highlight">
+              <p>
+                <strong>Impegno principale:</strong> Luma Focus adotta un approccio local-first. I dati relativi a benessere e rilevamento allontanamento restano principalmente sul tuo Mac e non vengono caricati sui nostri server.
+              </p>
+            </div>
+            <h3>1. Ambito</h3>
+            <p>Questa informativa si applica a Luma Focus su macOS.</p>
+            <h3>2. Dati trattati</h3>
+            <ul>
+              <li>Dati di promemoria e ritmo lavoro/pausa.</li>
+              <li>Dati wellness inseriti manualmente.</li>
+              <li>Segnali di allontanamento: Bluetooth e stato presenza/assenza.</li>
+              <li>Metadati app locali opzionali (nome/Bundle ID).</li>
+              <li>Stato abbonamento da Apple StoreKit.</li>
+            </ul>
+            <h3>3. Permessi</h3>
+            <ul>
+              <li>Bluetooth (necessario) per rilevare allontanamento/ritorno.</li>
+              <li>Fotocamera (opzionale) per verifica locale; nessun salvataggio di immagini/video.</li>
+            </ul>
+            <h3>4. Conservazione</h3>
+            <p>I dati restano nel sandbox locale di macOS. Puoi cancellarli nell'app o disinstallando l'app.</p>
+            <h3>5. Contatti</h3>
+            <p>Email: <a href="mailto:qq927884591@gmail.com">qq927884591@gmail.com</a></p>
+          </article>
+
+          <article class="content lang-section" id="privacy-es-content">
+            <h2>Política de privacidad</h2>
+            <div class="highlight">
+              <p>
+                <strong>Compromiso principal:</strong> Luma Focus es local-first. Los datos de bienestar y detección de ausencia se almacenan principalmente en tu Mac y no se suben a nuestros servidores.
+              </p>
+            </div>
+            <h3>1. Alcance</h3>
+            <p>Esta política se aplica a Luma Focus en macOS.</p>
+            <h3>2. Datos que procesamos</h3>
+            <ul>
+              <li>Datos de recordatorios y ritmo trabajo/descanso.</li>
+              <li>Registros de bienestar introducidos manualmente.</li>
+              <li>Señales de ausencia: Bluetooth y estado presente/ausente.</li>
+              <li>Metadatos locales de apps (opcional) para auto-pausa.</li>
+              <li>Estado de suscripción recibido de Apple StoreKit.</li>
+            </ul>
+            <h3>3. Permisos</h3>
+            <ul>
+              <li>Bluetooth (requerido) para detectar salida/regreso.</li>
+              <li>Cámara (opcional) para verificación local secundaria; sin guardar imágenes/vídeos.</li>
+            </ul>
+            <h3>4. Almacenamiento</h3>
+            <p>Los datos se guardan localmente en el contenedor sandbox de macOS. Puedes eliminarlos desde la app o al desinstalarla.</p>
+            <h3>5. Contacto</h3>
+            <p>Correo: <a href="mailto:qq927884591@gmail.com">qq927884591@gmail.com</a></p>
+          </article>
+
+          <article class="content lang-section" id="privacy-hi-content">
+            <h2>गोपनीयता नीति</h2>
+            <div class="highlight">
+              <p>
+                <strong>मुख्य प्रतिबद्धता:</strong> Luma Focus local-first डिज़ाइन पर आधारित है। स्वास्थ्य रिमाइंडर और दूर-हटने की जाँच से जुड़ा डेटा मुख्य रूप से आपके Mac पर रहता है और हमारे सर्वर पर अपलोड नहीं किया जाता।
+              </p>
+            </div>
+            <h3>1. दायरा</h3>
+            <p>यह नीति macOS पर Luma Focus के उपयोग पर लागू होती है।</p>
+            <h3>2. हम कौन सा डेटा प्रोसेस करते हैं</h3>
+            <ul>
+              <li>रिमाइंडर और कार्य/विश्राम रिदम डेटा।</li>
+              <li>आपके द्वारा दर्ज किए गए वेलनेस रिकॉर्ड (जैसे पानी लॉग)।</li>
+              <li>ब्लूटूथ और उपस्थित/अनुपस्थित स्थिति संकेत।</li>
+              <li>ऑटो-पॉज़ सेटिंग के लिए स्थानीय ऐप मेटाडेटा (वैकल्पिक)।</li>
+              <li>Apple StoreKit से प्राप्त सदस्यता स्थिति।</li>
+            </ul>
+            <h3>3. अनुमतियां</h3>
+            <ul>
+              <li>ब्लूटूथ (आवश्यक): दूर जाना/वापसी पहचान।</li>
+              <li>कैमरा (वैकल्पिक): केवल स्थानीय सत्यापन; कोई इमेज/वीडियो स्टोरेज नहीं।</li>
+            </ul>
+            <h3>4. स्टोरेज</h3>
+            <p>डेटा macOS सैंडबॉक्स में स्थानीय रूप से स्टोर होता है। आप ऐप में डेटा साफ कर सकते हैं या ऐप हटाकर लोकल डेटा हटा सकते हैं।</p>
+            <h3>5. संपर्क</h3>
+            <p>ईमेल: <a href="mailto:qq927884591@gmail.com">qq927884591@gmail.com</a></p>
+          </article>
+
+          <article class="content lang-section" id="privacy-tr-content">
+            <h2>Gizlilik Politikası</h2>
+            <div class="highlight">
+              <p>
+                <strong>Temel taahhüt:</strong> Luma Focus yerel öncelikli çalışır. Sağlık hatırlatıcıları ve uzaklaşma algılama verileri ağırlıkla Mac'inizde tutulur ve kendi sunucularımıza yüklenmez.
+              </p>
+            </div>
+            <h3>1. Kapsam</h3>
+            <p>Bu politika, macOS üzerindeki Luma Focus kullanımı için geçerlidir.</p>
+            <h3>2. İşlenen veriler</h3>
+            <ul>
+              <li>Hatırlatıcı ve çalışma/dinlenme döngüsü verileri.</li>
+              <li>Elle girilen wellness kayıtları.</li>
+              <li>Bluetooth sinyali ve var/yok durum sonucu.</li>
+              <li>Oto-duraklatma için yerel uygulama metaverisi (opsiyonel).</li>
+              <li>Apple StoreKit tarafından dönen abonelik durumu.</li>
+            </ul>
+            <h3>3. İzinler</h3>
+            <ul>
+              <li>Bluetooth (zorunlu): uzaklaşma/geri dönüş algılama.</li>
+              <li>Kamera (opsiyonel): cihaz üzerinde ikincil doğrulama; görüntü/video saklanmaz.</li>
+            </ul>
+            <h3>4. Saklama</h3>
+            <p>Veriler macOS sandbox içinde yerel saklanır. Uygulama içinden temizleyebilir veya uygulamayı kaldırarak silebilirsiniz.</p>
+            <h3>5. İletişim</h3>
+            <p>E-posta: <a href="mailto:qq927884591@gmail.com">qq927884591@gmail.com</a></p>
           </article>
         </section>
 
         <section class="page-section" id="terms-page">
           <article class="content lang-section active" id="terms-zh-content">
             <h2>使用条款（EULA）</h2>
-
             <div class="highlight">
-              <p>
-                使用本应用即表示您同意本条款。Luma Focus 采用 Apple 标准最终用户许可协议（Standard EULA）作为基础许可条款。
-              </p>
+              <p>使用本应用即表示您同意本条款。Luma Focus 采用 Apple 标准最终用户许可协议（Standard EULA）作为基础许可条款。</p>
             </div>
-
             <h3>1. 适用协议</h3>
             <p>
               Apple 标准 EULA：
-              <a
-                href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/"
-                target="_blank"
-                rel="noopener noreferrer"
-                >https://www.apple.com/legal/internet-services/itunes/dev/stdeula/</a
-              >
+              <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank" rel="noopener noreferrer">https://www.apple.com/legal/internet-services/itunes/dev/stdeula/</a>
             </p>
-
-            <h3>2. 订阅与购买信息（与应用内一致）</h3>
+            <h3>2. 订阅与购买信息</h3>
             <ul>
               <li><strong>产品 1：</strong>Luma Pro 年度订阅（自动续订，周期 1 年）。</li>
               <li><strong>产品 2：</strong>Luma Pro 终身版（一次性买断，非自动续订）。</li>
-              <li>
-                <strong>价格：</strong>以 App 内购买页和 App Store 展示价格为准（会因地区/税费变化）。
-              </li>
+              <li><strong>价格：</strong>以 App 内购买页和 App Store 展示价格为准。</li>
             </ul>
-
-            <h3>3. 自动续订说明（年度订阅）</h3>
-            <ul>
-              <li>付款将在确认购买时从您的 Apple ID 账户扣款。</li>
-              <li>除非您在当前周期结束前至少 24 小时取消，否则将自动续订。</li>
-              <li>续订费用将在当前周期结束前 24 小时内扣款。</li>
-              <li>您可在 Apple 账户订阅管理中管理或取消订阅。</li>
-            </ul>
-
-            <h3>4. 使用限制</h3>
-            <ul>
-              <li>您获得非独占、不可转让、可撤销的个人使用许可。</li>
-              <li>除法律允许外，不得逆向工程、反编译或提取源代码。</li>
-              <li>不得将本应用用于违法、侵权或破坏系统安全的用途。</li>
-            </ul>
-
-            <h3>5. 医疗免责声明</h3>
-            <p>
-              本应用为健康生活辅助工具，不构成医疗建议、诊断或治疗方案。
-            </p>
-
-            <h3>6. 责任限制</h3>
-            <p>
-              在法律允许范围内，本应用按“现状”提供。对间接、附带、特殊或后果性损失不承担责任。
-            </p>
-
-            <h3>7. 隐私政策</h3>
-            <p>
-              使用前请同时阅读：
-              <a href="https://927884591.github.io/privacy-policy/?page=privacy&lang=zh"
-                >隐私政策</a
-              >
-            </p>
-
-            <h3>8. 联系方式</h3>
-            <p>
-              邮箱：
-              <a href="mailto:qq927884591@gmail.com">qq927884591@gmail.com</a>
-            </p>
+            <h3>3. 联系方式</h3>
+            <p>邮箱：<a href="mailto:qq927884591@gmail.com">qq927884591@gmail.com</a></p>
           </article>
 
           <article class="content lang-section" id="terms-en-content">
             <h2>Terms of Use (EULA)</h2>
-
             <div class="highlight">
-              <p>
-                By using this app, you agree to these Terms. Luma Focus uses the Apple Standard EULA as the base license agreement.
-              </p>
+              <p>By using this app, you agree to these Terms. Luma Focus uses the Apple Standard EULA as the base license agreement.</p>
             </div>
-
             <h3>1. Governing Agreement</h3>
             <p>
               Apple Standard EULA:
-              <a
-                href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/"
-                target="_blank"
-                rel="noopener noreferrer"
-                >https://www.apple.com/legal/internet-services/itunes/dev/stdeula/</a
-              >
+              <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank" rel="noopener noreferrer">https://www.apple.com/legal/internet-services/itunes/dev/stdeula/</a>
             </p>
-
-            <h3>2. Subscription and Purchase Information (Matches In-App Flow)</h3>
+            <h3>2. Subscription and Purchase Information</h3>
             <ul>
               <li><strong>Product 1:</strong> Luma Pro Yearly (auto-renewable, 1-year period).</li>
               <li><strong>Product 2:</strong> Luma Pro Lifetime (one-time purchase, non-renewing).</li>
-              <li><strong>Price:</strong> shown on the in-app purchase screen and App Store, may vary by region/tax.</li>
+              <li><strong>Price:</strong> shown on the in-app purchase screen and App Store.</li>
             </ul>
-
-            <h3>3. Auto-Renewal Notes (Yearly Subscription)</h3>
-            <ul>
-              <li>Payment is charged to your Apple ID account at confirmation of purchase.</li>
-              <li>Subscription renews automatically unless canceled at least 24 hours before period end.</li>
-              <li>Renewal charge occurs within 24 hours before the current period ends.</li>
-              <li>You can manage or cancel in Apple account subscription settings.</li>
-            </ul>
-
-            <h3>4. License Restrictions</h3>
-            <ul>
-              <li>Non-exclusive, non-transferable, revocable personal license.</li>
-              <li>No reverse engineering except where legally permitted.</li>
-              <li>No unlawful, infringing, or security-disruptive use.</li>
-            </ul>
-
-            <h3>5. Medical Disclaimer</h3>
-            <p>
-              This app is a wellness assistance tool and does not provide medical advice, diagnosis, or treatment.
-            </p>
-
-            <h3>6. Limitation of Liability</h3>
-            <p>
-              To the maximum extent permitted by law, the app is provided "as is" and we are not liable for indirect, incidental, special, or consequential damages.
-            </p>
-
-            <h3>7. Privacy Policy</h3>
-            <p>
-              Please also review our
-              <a href="https://927884591.github.io/privacy-policy/?page=privacy&lang=en"
-                >Privacy Policy</a
-              >.
-            </p>
-
-            <h3>8. Contact</h3>
-            <p>
-              Email:
-              <a href="mailto:qq927884591@gmail.com">qq927884591@gmail.com</a>
-            </p>
+            <h3>3. Contact</h3>
+            <p>Email: <a href="mailto:qq927884591@gmail.com">qq927884591@gmail.com</a></p>
           </article>
         </section>
 
         <section class="page-section" id="support-page">
           <article class="content lang-section active" id="support-zh-content">
             <h2>技术支持</h2>
-
             <div class="highlight">
-              <p>
-                如果遇到问题，请邮件联系我们，并附上 macOS 版本、Luma Focus 版本、问题截图和复现步骤。
-              </p>
+              <p>如果遇到问题，请邮件联系我们，并附上 macOS 版本、Luma Focus 版本、问题截图和复现步骤。</p>
             </div>
-
             <h3>1. 常见问题</h3>
             <ol>
               <li>提醒未触发：请检查系统通知权限和专注模式。</li>
               <li>离座检测不稳定：请检查蓝牙权限与可选摄像头权限。</li>
-              <li>订阅状态异常：在 Apple 订阅管理中检查当前状态并尝试“恢复购买”。</li>
+              <li>订阅状态异常：检查 Apple 订阅状态并尝试“恢复购买”。</li>
             </ol>
-
-            <h3>2. 订阅管理入口</h3>
-            <p>
-              Apple 官方说明：
-              <a
-                href="https://support.apple.com/en-us/HT202039"
-                target="_blank"
-                rel="noopener noreferrer"
-                >https://support.apple.com/en-us/HT202039</a
-              >
-            </p>
-
-            <h3>3. 法律文档</h3>
-            <ul>
-              <li>
-                <a href="https://927884591.github.io/privacy-policy/?page=privacy&lang=zh"
-                  >隐私政策</a
-                >
-              </li>
-              <li>
-                <a href="https://927884591.github.io/privacy-policy/?page=terms&lang=zh"
-                  >使用条款(EULA)</a
-                >
-              </li>
-            </ul>
-
-            <h3>4. 联系方式</h3>
-            <p>
-              邮箱：
-              <a href="mailto:qq927884591@gmail.com">qq927884591@gmail.com</a>
-            </p>
+            <h3>2. 联系方式</h3>
+            <p>邮箱：<a href="mailto:qq927884591@gmail.com">qq927884591@gmail.com</a></p>
           </article>
 
           <article class="content lang-section" id="support-en-content">
             <h2>Technical Support</h2>
-
             <div class="highlight">
-              <p>
-                If you need help, email us with your macOS version, Luma Focus version, screenshots, and reproduction steps.
-              </p>
+              <p>If you need help, email us with your macOS version, Luma Focus version, screenshots, and reproduction steps.</p>
             </div>
-
             <h3>1. FAQ</h3>
             <ol>
               <li>Reminder not firing: check notification permissions and Focus mode.</li>
               <li>Step-away detection instability: verify Bluetooth permission and optional Camera permission.</li>
               <li>Subscription mismatch: verify status in Apple subscription settings and try Restore Purchases.</li>
             </ol>
-
-            <h3>2. Manage Subscription</h3>
-            <p>
-              Apple support article:
-              <a
-                href="https://support.apple.com/en-us/HT202039"
-                target="_blank"
-                rel="noopener noreferrer"
-                >https://support.apple.com/en-us/HT202039</a
-              >
-            </p>
-
-            <h3>3. Legal Documents</h3>
-            <ul>
-              <li>
-                <a href="https://927884591.github.io/privacy-policy/?page=privacy&lang=en"
-                  >Privacy Policy</a
-                >
-              </li>
-              <li>
-                <a href="https://927884591.github.io/privacy-policy/?page=terms&lang=en"
-                  >Terms of Use (EULA)</a
-                >
-              </li>
-            </ul>
-
-            <h3>4. Contact</h3>
-            <p>
-              Email:
-              <a href="mailto:qq927884591@gmail.com">qq927884591@gmail.com</a>
-            </p>
+            <h3>2. Contact</h3>
+            <p>Email: <a href="mailto:qq927884591@gmail.com">qq927884591@gmail.com</a></p>
           </article>
         </section>
       </main>
@@ -747,7 +655,7 @@
 
     <script>
       const pages = ["privacy", "terms", "support"];
-      const langs = ["zh", "en"];
+      const langs = ["zh", "en", "pl", "ms", "it", "es", "hi", "tr"];
       const pageAliases = { eula: "terms", "terms-of-use": "terms" };
 
       function getUrlParameter(name) {
@@ -780,18 +688,34 @@
         });
       }
 
+      function getAvailableContentLang(page, preferredLang) {
+        const preferred = document.getElementById(`${page}-${preferredLang}-content`);
+        if (preferred) return preferredLang;
+
+        const english = document.getElementById(`${page}-en-content`);
+        if (english) return "en";
+
+        const firstExisting = langs.find((lang) =>
+          document.getElementById(`${page}-${lang}-content`)
+        );
+        return firstExisting || preferredLang;
+      }
+
       function applyLanguage(lang) {
-        document
-          .querySelectorAll(".language-toggle button")
-          .forEach((button) => {
-            button.classList.toggle("active", button.dataset.lang === lang);
-          });
+        document.querySelectorAll(".language-toggle button").forEach((button) => {
+          button.classList.toggle("active", button.dataset.lang === lang);
+        });
 
         pages.forEach((page) => {
-          langs.forEach((l) => {
-            const content = document.getElementById(page + "-" + l + "-content");
-            if (content) content.classList.toggle("active", l === lang);
-          });
+          const visibleLang = getAvailableContentLang(page, lang);
+          document
+            .querySelectorAll(`#${page}-page .lang-section`)
+            .forEach((content) => {
+              content.classList.toggle(
+                "active",
+                content.id === `${page}-${visibleLang}-content`
+              );
+            });
         });
       }
 
